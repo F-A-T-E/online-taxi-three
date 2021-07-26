@@ -1,0 +1,48 @@
+# 应用名称
+spring:
+  application:
+    name: cloud-eureka
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://localhost:7900/eureka/,http://localhost:7901/eureka/,http://localhost:7902/eureka/
+  server:
+    #自我保护
+    enable-self-preservation: false
+    #自我保护阈值
+    renewal-percent-threshold: 0.85
+    #剔除服务时间间隔
+    eviction-interval-timer-in-ms: 1000
+    #关闭从readonly读注册表
+    use-read-only-response-cache: false
+    #readwrite和readonly
+    response-cache-update-interval-ms: 1000
+
+---
+spring:
+  profiles: 7900
+server:
+  port: 7900
+eureka:
+  instance:
+    hostname: cloud-eureka-7900
+
+---
+spring:
+  profiles: 7901
+server:
+  port: 7901
+eureka:
+  instance:
+    hostname: cloud-eureka-7901
+
+---
+spring:
+  profiles: 7902
+server:
+  port: 7902
+eureka:
+  instance:
+    hostname: cloud-eureka-7902
