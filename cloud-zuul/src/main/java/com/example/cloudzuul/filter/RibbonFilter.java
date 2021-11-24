@@ -35,9 +35,10 @@ public class RibbonFilter extends ZuulFilter {
 		//获取 请求url
 		String remoteAddr = request.getRemoteAddr();
 //		和老地址 做匹配
-		if(remoteAddr.contains("/sms-test3")) {
+		if(remoteAddr.contains("/sms-test31")) {
 //			remoteAddr =>
-			currentContext.set(FilterConstants.REQUEST_URI_KEY,"");
+			currentContext.set(FilterConstants.SERVICE_ID_KEY,"service-sms");
+			currentContext.set(FilterConstants.REQUEST_URI_KEY,"/sms-test3");
 		}
 		return null;
 	}
